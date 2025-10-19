@@ -4,8 +4,9 @@ import type { FormStateType } from "../layouts/Layout"
 import { Form, useActionData } from 'react-router-dom'
 import type { ActionFunctionArgs } from "react-router-dom"
 import { initialFormState } from "../layouts/Layout"
+import { useFormStore } from "../stores/useFormStoreCreate"
 
-
+//props del context layout
 export type LayoutContextTypeProps = {
   formState: FormStateType,
   setFormState: React.Dispatch<React.SetStateAction<FormStateType>>
@@ -20,6 +21,7 @@ export type ErrorForm = {
   fecha?: string,
 }
 
+// action que maneja la repuesta del formulario
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData.entries()) as FormStateType
@@ -31,12 +33,14 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 }
 
 export default function Contacto() {
+  //States
   const { formState, setFormState } = useOutletContext<LayoutContextTypeProps>()
   const [errorForm, setErrorForm] = useState<ErrorForm>({} as ErrorForm)
   const formRef = useRef<HTMLFormElement | null>(null);
   const actionData = useActionData() as { success?: boolean } | null;
+  const addLoginUsuarios = useFormStore(state => state.addLoginUsuarios)
 
-
+  //Mostrar los cmpos requeridos desde el inicio
   useEffect(() => {
     setErrorForm({
       nombre: '*Campo requerido*',
@@ -48,16 +52,20 @@ export default function Contacto() {
     })
   }, [])
 
+  //envio del formulario
   useEffect(() => {
     if (actionData?.success) {
+      addLoginUsuarios(formState)
       setFormState(initialFormState);
       setErrorForm({});
-      formRef.current?.reset(); // 👈 limpia también el DOM
+      formRef.current?.reset();
+    } else {
+      console.log('fallo en el envio')
     }
-  }, [actionData]);
+  }, [actionData])
 
 
-
+  //recuperar datos y validación
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const { name, value } = e.target
@@ -83,6 +91,7 @@ export default function Contacto() {
     }
   }
 
+  //boton  reset formulario
   const handleReset = () => {
     setFormState(initialFormState)
     formRef.current?.reset()
@@ -96,10 +105,12 @@ export default function Contacto() {
           <p className="w-2/3">Rellena los campos del formulario para que podamos contactar contigo lo antes posible.</p>
           <div className="w-full">
             <Form
+              //props del formulario
               ref={formRef}
               method="post"
               className="flex flex-col p-5  shadow-neutral-400 shadow-lg rounded-br-2xl"
             >
+              {/*Tarjetas de los input*/}
               <div>
                 <label
                   htmlFor="nombre"
@@ -210,6 +221,7 @@ export default function Contacto() {
                 >
                 </textarea>
               </div>
+              {/*Botones de los input*/}
               <div className="flex flex-row justify-center gap-10 pt-10 pb-5">
                 <button
                   type="submit"
@@ -220,7 +232,6 @@ export default function Contacto() {
                   onClick={handleReset}
                 >Resetear</button>
               </div>
-
             </Form>
           </div>
         </div>

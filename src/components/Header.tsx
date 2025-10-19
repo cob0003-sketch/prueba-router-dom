@@ -39,10 +39,11 @@ export default function Header() {
         }
     }, [])
 
+    // manejador del state del modal
     const isModalOpen = () => {
         setModalNav(prev => !prev)
     }
-
+    // array de enlaces
     const enlacesNav = [
         {
             nombre: 'Inicio',
@@ -78,10 +79,7 @@ export default function Header() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 2, delay: 0.5, ease: 'easeInOut' }}
                         className='flex flex-col w-50 p-5 h-120 justify-end items-end gap-1 z-10'>
-                        {/* <div>
-                        <p className='text-white'>Menú</p>
-                    </div> */}
-
+                        {/*renderizar enlaces */}
                         {enlacesNav.map(enlace => (
                             <motion.div
                                 key={enlace.nombre}
@@ -105,7 +103,7 @@ export default function Header() {
                     </div>
                 </div>
             )}
-
+            {/*media-query-tablet*/}
             {deviceType === 'tablet' && (
                 <div
                     className='relative bg-[url(/img/img-header-pruebas.jpg)] bg-no-repeat bg-cover bg-top min-h-90'>
@@ -142,6 +140,7 @@ export default function Header() {
                     </div>
                 </div>
             )}
+            {/*medai-query-telefono */}
             {deviceType === 'movil' && (
                 <div
                     className='relative bg-[url(/img/img-header-pruebas.jpg)] bg-no-repeat bg-cover bg-top min-h-90'>
@@ -160,6 +159,7 @@ export default function Header() {
                             type='button'
                             onClick={isModalOpen}
                             className='w-35 pl-11 pt-2 mb-1 text-white text-xs underline underline-offset-3 pb-1 z-50'>Menú</button>
+                        {/*mostrar o no la navegación */}
                         {!modalNav ? '' : <nav
                             className=' bg-black/70 flex flex-col gap-1 items-end w-35 px-7  rounded-xl'>
                             {enlacesNav.map(enlace => (
@@ -175,13 +175,8 @@ export default function Header() {
                                     >{enlace.nombre}</NavLink>
                                 </motion.div>
                             ))}
-
                         </nav>}
-
-
                     </div>
-
-
                 </div>
             )}
         </>
