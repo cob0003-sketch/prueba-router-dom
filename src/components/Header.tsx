@@ -37,7 +37,7 @@ export default function Header() {
         <>
             <section className='relative'>
                 <div className='fixed flex flex-row justify-between items-start w-full bg-neutral-100/95 py-2 z-100 top-0 left-0'>
-                    <h1 className='flex-1 text-5xl p-2 pb-4 text-neutral-200 font-bold text-shadow-lg text-shadow-black'>Forma<span className='text-2xl text-green-500'>{' '}Innova</span></h1>
+                    <h1 className='flex-1 text-5xl p-2 pb-4 text-neutral-200 font-semi-bold text-shadow-md text-shadow-neutral-600'>Logo<span className='text-lg text-green-500'>{' '}SubTitulo</span></h1>
                     <div className='flex flex-col  '>
                         <button
                             type='button'
@@ -64,17 +64,18 @@ export default function Header() {
 
 
                 <div className='grid grid-cols-2 mt-22'>
-                    <div className='relative min-h-110 bg-neutral-900'>
+                    <div className='relative min-h-110 bg-neutral-900 flex flex-col items-center justify-center gap-15'>
                         <motion.p
-                            initial={{ opacity: 0, x: 60 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, x: 60}}
+                            animate={{ opacity: 1, x: 0}}
                             transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
-                            className=' text-neutral-200 pt-21 text-center text-7xl'>Soluciones tecnicas para particulares y empresas</motion.p>
+                            className='text-neutral-200 px-6 text-center text-7xl'>Parrafo para poner información relevante</motion.p>
+
+                        <button className='w-1/2 p-2 bg-green-600 text-amber-50 text-lg text-shadow-neutral-700 text-shadow-sm font-bold rounded-4xl'>Click a destacar</button>
                     </div>
 
                     <div className='bg-[url(/img/img-header-pruebas.jpg)] bg-no-repeat bg-cover w-full min-h-110'>
                         <div className='absolute top-0 w-full h-full bg-black/30 px-4 z-10'>
-
                         </div>
                     </div>
                 </div>
