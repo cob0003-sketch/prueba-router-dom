@@ -1,5 +1,4 @@
 import { motion } from "framer-motion"
-import { duration } from "moment"
 
 export default function IndexPage() {
 
@@ -36,26 +35,25 @@ export default function IndexPage() {
         <div className="flex flex-col items-start">
           <h2
             id="proyectos-heading"
-            className="pl-30 mt-25 text-5xl text-neutral-500 text-shadow-neutral-800 text-shadow-md">Nuestros
-             <span className="block pl-10 text-neutral-500 font-semibold">últimos</span>
+            className="pl-32 mt-25 text-5xl text-neutral-700 text-shadow-neutral-800 text-shadow-sm">Nuestros
+             <span className="block text-neutral-700">últimos</span>
              <motion.span
-              initial={{opacity: 0, x: 70}}
-               whileInView={{opacity:1, x:0}}
+              initial={{opacity: 0}}
+               whileInView={{opacity:1}}
                 viewport={{once: true, amount: 0.5}}
-                transition={{duration: 1.2 , delay: 0.7, ease:'easeOut'}}
-                 className="block pl-20 text-green-600 font-bold uppercase">proyectos</motion.span></h2>
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 md:mx-auto p-10">
-            {contenedorProyectos.map((proyecto, index) => (
+                transition={{duration: 3, delay: 0.4, ease:'linear'}}
+                 className="text-green-600 font-medium">proyectos</motion.span></h2>
+          <div className="grid gap-10 w-7/8 md:grid-cols-2 lg:grid-cols-3 md:mx-auto p-10">
+            {contenedorProyectos.map((proyecto) => (
               <motion.article
-                initial={{ opacity: 0, x:8}}
+                initial={{ opacity: 0, x:20}}
                 whileInView={{opacity: 1, x: 0}}
                 viewport={{once: true, amount: 0.4}}
-                transition={{duration: 2, delay: 0.6 * index * 0.4, ease: 'easeOut'}}
+                transition={{duration: 2, delay: 0.2, ease: 'easeOut'}}
                 key={proyecto.id}
                 className="shadow-neutral-500 shadow-lg rounded-b-md"
               >
                 <a
-
                   href={`${proyecto.enlace}`}
                   target="blank">
                   <img
