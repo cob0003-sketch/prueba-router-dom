@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;   /* scroll suave */
+  scroll-padding-top: 85px;   /* altura de tu navbar fijo */
+}
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+}
+

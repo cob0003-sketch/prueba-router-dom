@@ -2,13 +2,14 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import { useState } from 'react';
 
+
 export type FormStateType = {
     nombre: string
     apellido1: string
     apellido2: string
     email: string
     telefono: string
-    fecha: string 
+    fecha: string
     comentario?: string
 }
 
@@ -19,11 +20,10 @@ export const initialFormState = {
     email: '',
     telefono: '',
     fecha: '',
-    comentario:''
+    comentario: ''
 }
 
 export default function Layout() {
-
     const [formState, setFormState] = useState<FormStateType>(initialFormState)
 
     return (
@@ -31,7 +31,7 @@ export default function Layout() {
             <Header />
             <main>
                 <Outlet
-                context={{formState, setFormState}} />
+                    context={{ formState, setFormState }} />
             </main>
         </>
     )
