@@ -23,12 +23,15 @@ export const initialFormState = {
     comentario: ''
 }
 
+
 export default function Layout() {
     const [formState, setFormState] = useState<FormStateType>(initialFormState)
+  
 
     return (
         <>
-            <Header />
+            <Header
+             />
             <main>
                 <Outlet
                     context={{ formState, setFormState }} />
