@@ -5,14 +5,15 @@ import type { FormStateType } from "../layouts/Layout"
 import { Form, useActionData } from 'react-router-dom'
 import type { ActionFunctionArgs } from "react-router-dom"
 import { initialFormState } from "../layouts/Layout"
-import { useFormStore } from "../stores/useFormStoreCreate"
+import { useAppStore } from "../stores/useAppStoreCreate"
 import { contenedorProyectos, enlacesNav } from "../data/db"
 import type { ErrorForm } from "../types/index"
 
 //props del context layout
 export type LayoutContextTypeProps = {
   formState: FormStateType,
-  setFormState: React.Dispatch<React.SetStateAction<FormStateType>>
+  setFormState: React.Dispatch<React.SetStateAction<FormStateType>>,
+
 }
 
 // action que maneja la repuesta del formulario
@@ -28,13 +29,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export default function IndexPage() {
   //States
   const [scrolling, setScrolling] = useState<number>(0)
-  const [modalNav, setModalNav] = useState<boolean>(false)
+  //Traemos los state del latout con useOutletContext
   const { formState, setFormState } = useOutletContext<LayoutContextTypeProps>()
   const [errorForm, setErrorForm] = useState<ErrorForm>({} as ErrorForm)
   const formRef = useRef<HTMLFormElement | null>(null);
   const actionData = useActionData() as { success?: boolean } | null;
-  const addLoginUsuarios = useFormStore(state => state.addLoginUsuarios)
-
+  const addLoginUsuarios = useAppStore(state => state.addLoginUsuarios)
+  const changeModalNav = useAppStore(state => state.changeModalNav)
+  const closeModalNav = useAppStore(state => state.closeModalNav)
+  const modalNav = useAppStore(state => state.modalNav)
+  const modalBanner = useAppStore(state => state.modalBanner)
 
   //Mostrar los cmpos requeridos desde el inicio
   useEffect(() => {
@@ -68,10 +72,9 @@ export default function IndexPage() {
       setScrolling(scrollNav)
 
       if (scrollNav > 0) {
-        setModalNav(false)
+        closeModalNav()
       }
     }
-
     window.addEventListener('scroll', updateStateScroll)
     return () => window.removeEventListener('scroll', updateStateScroll)
   }, [])
@@ -109,11 +112,10 @@ export default function IndexPage() {
     formRef.current?.reset()
   }
 
-
-  // manejador del state del modal
-  const isModalOpen = () => {
-    setModalNav(prev => !prev)
-  }
+  // // manejador del state del modal
+  // const isModalOpen = () => {
+  //   setModalNav(prev => !prev)
+  // }
 
   // Se hace con css puro
   // const handleScrollSection = (id: string) => {
@@ -126,15 +128,18 @@ export default function IndexPage() {
 
   return (
     <>
+      {/**barra de navegación */}
+      { }
       <section aria-labelledby="name-page">
-        <div className='fixed flex flex-row justify-between items-start w-full bg-neutral-100/95 py-2 z-100 top-0 left-0'>
+        {!modalBanner ? <div className='fixed flex flex-row justify-between items-start w-full bg-neutral-100/95 py-2 z-100 top-0 left-0'>
           <h1
             id="name-page"
             className='flex-1 text-5xl p-2 pb-4 text-neutral-200 font-semi-bold text-shadow-md text-shadow-neutral-600'>Logo<span className='text-lg text-green-500'>{' '}SubTitulo</span></h1>
+          {/**Nav navegación, código del modal */}
           <div className='flex flex-col  '>
             <button
               type='button'
-              onClick={isModalOpen}
+              onClick={changeModalNav}
               className='w-35 pt-2 mb-1 text-right pr-5 text-green-700 text-xs font-bold underline underline-offset-3 pb-1 z-50'>Menú</button>
             {!modalNav ? '' : <nav
               className='absolute top-10 right-3 p-2 bg-black/70 flex flex-col gap-1 items-end w-35 px-7 rounded-xl z-90'>
@@ -154,7 +159,8 @@ export default function IndexPage() {
               )}
             </nav>}
           </div>
-        </div>
+        </div> : ''}
+
       </section>
 
       <section aria-labelledby="proyectos-heading"
@@ -179,7 +185,7 @@ export default function IndexPage() {
               const esIndexPar = proyecto.promocion && index % 2 === 0
               // Definimos desplazamiento según la condición
               const desplazamiento = esIndexPar ? 20 : -20
-              if(proyecto.promocion) {
+              if (proyecto.promocion) {
                 return (
                   <motion.article
                     initial={{ opacity: 0.2, x: desplazamiento }}
