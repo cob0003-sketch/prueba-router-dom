@@ -258,7 +258,7 @@ export default function IndexPage() {
         <div className="flex flex-col gap-3 w-1/2 mx-auto my-5 ">
           <p className="w-2/3 font-bold text-neutral-400">Rellena los campos del formulario para que podamos contactar contigo lo antes posible.</p>
           <div className="w-full">
-            <Form
+            <form
               //props del formulario
               ref={formRef}
               method="post"
@@ -386,7 +386,7 @@ export default function IndexPage() {
                   onClick={handleReset}
                 >Resetear</button>
               </div>
-            </Form>
+            </form>
           </div>
         </div>
       </section>
