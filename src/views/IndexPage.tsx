@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState, useRef } from "react"
 import { useOutletContext } from "react-router-dom"
 import type { FormStateType } from "../layouts/Layout"
@@ -131,33 +131,55 @@ export default function IndexPage() {
       {/**barra de navegación */}
       { }
       <section aria-labelledby="name-page">
-        {!modalBanner ? <div className='fixed flex flex-row justify-between items-start w-full bg-neutral-100/95 py-2 z-100 top-0 left-0'>
+        {!modalBanner ? <div className='fixed flex flex-row items-center gap-15 w-full bg-white px-5 py-3 z-100 top-0 left-0'>
           <h1
             id="name-page"
-            className='flex-1 text-5xl p-2 pb-4 text-neutral-200 font-semi-bold text-shadow-md text-shadow-neutral-600'>Logo<span className='text-lg text-green-500'>{' '}SubTitulo</span></h1>
+            className='text-5xl text-neutral-600 font-semi-bold '>Logo</h1>
+            <nav className="flex-1 flex flex-row gap-5 items-center pt-2">
+                {enlacesNav.map(enlace => (
+                  <motion.div
+                    key={enlace.nombre}
+                    initial={{ x: 0 }}
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.15, ease: 'linear' }}
+                    className='font-semibold text-md cursor-pointer'>
+                    <a
+                      href={`#${enlace.path}`}
+                      className="text-neutral-500 font-bold hover:text-neutral-950 transition-all linear duration-500"
+                    >{enlace.nombre}</a>
+                  </motion.div>
+                )
+                )}
+            </nav>
           {/**Nav navegación, código del modal */}
           <div className='flex flex-col  '>
             <button
               type='button'
               onClick={changeModalNav}
               className='w-35 pt-2 mb-1 text-right pr-5 text-green-700 text-xs font-bold underline underline-offset-3 pb-1 z-50'>Menú</button>
-            {!modalNav ? '' : <nav
-              className='absolute top-10 right-3 p-2 bg-black/70 flex flex-col gap-1 items-end w-35 px-7 rounded-xl z-90'>
-              {enlacesNav.map(enlace => (
-                <motion.div
-                  key={enlace.nombre}
-                  initial={{ x: 0 }}
-                  whileHover={{ x: -7 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  className='font-semibold text-md cursor-pointer'>
-                  <a
-                    href={`#${enlace.path}`}
-                    className="text-white hover:text-green-500 transition-all linear duration-500"
-                  >{enlace.nombre}</a>
-                </motion.div>
-              )
-              )}
-            </nav>}
+            <AnimatePresence>
+              {!modalNav ? '' : <motion.nav
+                initial={{ opacity: 0.2, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 300 }}
+                transition={{ type: 'spring', stiffness: 20, damping: 10 }}
+                className='absolute top-18 right-0 w-67 pr-10 py-10 bg-neutral-700 flex flex-col gap-1 items-end rounded-bl-sm z-90'>
+                {enlacesNav.map(enlace => (
+                  <motion.div
+                    key={enlace.nombre}
+                    initial={{ x: 0 }}
+                    whileHover={{ x: -10 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className='font-semibold text-md cursor-pointer'>
+                    <a
+                      href={`#${enlace.path}`}
+                      className="text-white hover:text-amber-200 transition-all linear duration-500"
+                    >{enlace.nombre}</a>
+                  </motion.div>
+                )
+                )}
+              </motion.nav>}
+            </AnimatePresence>
           </div>
         </div> : ''}
 
