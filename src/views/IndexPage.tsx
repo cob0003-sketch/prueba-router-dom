@@ -33,7 +33,7 @@ export default function IndexPage() {
   const { formState, setFormState } = useOutletContext<LayoutContextTypeProps>()
   const [errorForm, setErrorForm] = useState<ErrorForm>({} as ErrorForm)
   const formRef = useRef<HTMLFormElement | null>(null);
-  const actionData = useActionData() as { success?: boolean } | null;
+  // const actionData = useActionData() as { success?: boolean } | null;
   const addLoginUsuarios = useAppStore(state => state.addLoginUsuarios)
   const changeModalNav = useAppStore(state => state.changeModalNav)
   const closeModalNav = useAppStore(state => state.closeModalNav)
@@ -52,17 +52,17 @@ export default function IndexPage() {
     })
   }, [])
 
-  //envio del formulario
-  useEffect(() => {
-    if (actionData?.success) {
-      addLoginUsuarios(formState)
-      setFormState(initialFormState);
-      setErrorForm({});
-      formRef.current?.reset();
-    } else {
-      console.log('fallo en el envio')
-    }
-  }, [actionData])
+  // //envio del formulario
+  // useEffect(() => {
+  //   if (actionData?.success) {
+  //     addLoginUsuarios(formState)
+  //     setFormState(initialFormState);
+  //     setErrorForm({});
+  //     formRef.current?.reset();
+  //   } else {
+  //     console.log('fallo en el envio')
+  //   }
+  // }, [actionData])
 
 
   //Comprovar el scroll para quitarle la visibilidad a la navegación
