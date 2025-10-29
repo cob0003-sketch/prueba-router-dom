@@ -1,8 +1,8 @@
 
 import { createHashRouter } from 'react-router-dom'
 import Layout from './layouts/Layout'
-import IndexPage, { action as actionDataForm } from './views/IndexPage'
 import Desarrollo from './views/DesarrolloPage'
+import IndexPage from './views/IndexPage'
 
 export const routerApp = createHashRouter([
   {
@@ -11,8 +11,7 @@ export const routerApp = createHashRouter([
     children: [
       {
         index: true,
-        element: <IndexPage />,
-        action: actionDataForm
+        element: <IndexPage />
       },
       {
         path: 'desarrollo',
