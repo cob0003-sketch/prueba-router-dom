@@ -1,17 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter, useRoutes } from 'react-router-dom'
-import { routes } from './router'
-
-function AppRouter() {
-  return useRoutes(routes)
-}
+import { RouterProvider } from 'react-router-dom'
+import { routerApp } from './router'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter>
-      <AppRouter />
-    </HashRouter>
+    <RouterProvider router={routerApp} />
   </StrictMode>
 )
+
 
