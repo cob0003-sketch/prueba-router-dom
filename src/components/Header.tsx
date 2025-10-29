@@ -23,46 +23,44 @@ export default function Header() {
     return (
         <>
             <section
-                className='relative overflow-hidden bg-[url(/img/img-header-pruebas.jpg)] bg-no-repeat bg-cover '
+                className='relative overflow-hidden bg-amber-50 mt-18'
                 id='inicio'>
                 {/**div capa oscura */}
-                <div className='w-full absolute top-0 h-full bg-black/50 px-4'></div>
+                <div className='w-full absolute top-0 h-full pointer-events-none'></div>
                 {/**div container del header */}
-                <div className='grid grid-cols-2 mt-22'>
+                <div className='flex flex-col justify-center items-center gap-7 py-25'>
                     {/**div banner */}
-                    <div className='relative w-3/4 mx-auto min-h-120 py-5 flex flex-col items-center justify-around'>
-                        <motion.h1
-                            initial={{ opacity: 0, x: -60 }}
+                    <motion.h1
+                        initial={{ opacity: 0, x: -60 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
+                        className='text-6xl text-neutral-600 font-bold tracking-tighter'>Texto describiendo algo importante.</motion.h1>
+                    <div className='w-1/2 flex flex-col justify-center items-center gap-10'>
+                        <motion.p
+                            initial={{ opacity: 0, x: 60 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
-                            className='text-6xl text-white'>Nombre<span className='block text-2xl text-green-600'>{' '}sub nombre</span></motion.h1>
-                        <div className='w-4/5 flex flex-col items-center justify-center gap-5 p-6 bg-black/60 border-2 border-amber-50 rounded-lg shadow-neutral-400 shadow-md'>
-                            <motion.p
-                                initial={{ opacity: 0, x: 60 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
-                                className='text-neutral-200 text-center text-xl '>Te ayudamsos a conseguir una solución para tú negocio, visita nuestros ultimos proyectos</motion.p>
+                            className='text-neutral-500 text-center text-2xl font-bold tracking-tighter'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed qui, commodi repellat quasi fugit dolorum veritatis. Repellat dolor.</motion.p>
+                        <div className='flex flex-row gap-10'>
                             {/**boton para el banner */}
                             <button
                                 type='button'
-                                className='w-1/2 p-2 bg-green-600 text-amber-50 text-lg text-shadow-neutral-700 text-shadow-sm
-                            font-bold rounded-4xl hover:bg-green-500
-                            transition-all linear duration-400'
+                                className='px-12 py-3 bg-neutral-800 text-amber-50 text-xl font-bold rounded-4xl hover:bg-neutral-600 hover:shadow-neutral-400 hover:shadow-md transition-all linear duration-300'
+                                onClick={handleBannerOpcion}>Proyectos</button>
+                            <button
+                                type='button'
+                                className='px-12 py-3 bg-neutral-100 border border-neutral-400 text-neutral-700 text-xl hover:bg-neutral-300 hover:shadow-neutral-400 hover:shadow-md font-bold rounded-4xl duration-300'
                                 onClick={handleBannerOpcion}>Proyectos</button>
                         </div>
                     </div>
-                    {/**div contiene el logo y texto */}
-                    <div className='w-4/5 mx-auto flex flex-col justify-center items-center gap-3.5 z-50'>
-                        <div className='w-25'>
-                            <img src="/img/zaitec-logo-blanco.png" alt="Imagen del logo" />
-                        </div>
-                        <motion.p
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
-                            className='text-white text-5xl text-center'>Desarrollo<span className='text-green-600'> + </span>Innovación</motion.p>
-                    </div>
                 </div>
+
+
+
+
+                {/**div contiene el logo y texto */}
+
+
                 {/**mostramos la oferta en un modal */}
                 {modalBanner && (
                     <div className='relative'>
@@ -96,8 +94,8 @@ export default function Header() {
                                         </div>
                                     </a>
                                     <button
-                                    onClick={closeBanner}
-                                    className='text-lg font-bold text-white bg-neutral-700 py-1 px-18 rounded-sm'>Volver a incio</button>
+                                        onClick={closeBanner}
+                                        className='text-lg font-bold text-white bg-neutral-700 py-1 px-18 rounded-sm'>Volver a incio</button>
                                 </div>
                             </motion.article>
                         ))}
