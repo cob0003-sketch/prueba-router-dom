@@ -28,7 +28,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export default function IndexPage() {
   //States
-  const [scrolling, setScrolling] = useState<number>(0)
+  const [_scrolling, setScrolling] = useState<number>(0)
   //Traemos los state del latout con useOutletContext
   const { formState, setFormState } = useOutletContext<LayoutContextTypeProps>()
   const [errorForm, setErrorForm] = useState<ErrorForm>({} as ErrorForm)
