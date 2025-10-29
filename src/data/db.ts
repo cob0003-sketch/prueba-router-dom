@@ -116,5 +116,4 @@ export const enlacesNav = [
     path: 'formacion',
     componente: true
   },
-
 ]
