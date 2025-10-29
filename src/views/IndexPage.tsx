@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react"
 import { useOutletContext } from "react-router-dom"
 import type { FormStateType } from "../layouts/Layout"
 import { Form, useActionData } from 'react-router-dom'
-import type { ActionFunctionArgs } from "react-router-dom"
+// import type { ActionFunctionArgs } from "react-router-dom"
 import { initialFormState } from "../layouts/Layout"
 import { useAppStore } from "../stores/useAppStoreCreate"
 import { contenedorProyectos, enlacesNav } from "../data/db"
@@ -16,15 +16,15 @@ export type LayoutContextTypeProps = {
 
 }
 
-// action que maneja la repuesta del formulario
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const formData = await request.formData()
-  const data = Object.fromEntries(formData.entries()) as FormStateType
-  const formatDataForm = { ...data }
+// // action que maneja la repuesta del formulario
+// export const action = async ({ request }: ActionFunctionArgs) => {
+//   const formData = await request.formData()
+//   const data = Object.fromEntries(formData.entries()) as FormStateType
+//   const formatDataForm = { ...data }
 
-  console.log(formatDataForm)
-  return { success: true }
-}
+//   console.log(formatDataForm)
+//   return { success: true }
+// }
 
 export default function IndexPage() {
   //States
