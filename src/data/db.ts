@@ -1,96 +1,49 @@
-export const contenedorProyectos = [
+export const contenedorMamparas = [
   {
     id: '1',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/digitalizacion.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: true,
+    titulo: 'Tokyo frontal',
+    imagen: `${import.meta.env.BASE_URL}/img/tokyo-frontal.png`,
+    descripcion: 'La opción más economica y popular',
     promocion: true
   },
   {
     id: '2',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/solucion.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
+    titulo: 'Tokyo angular',
+    imagen: `${import.meta.env.BASE_URL}/img/tokyo-angular.png`,
+    descripcion: 'Solución completa para esquinas',
     promocion: true
   },
   {
     id: '3',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/aplizaciones-innovadoras.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
+    titulo: 'Tokyo vertice',
+    imagen: `${import.meta.env.BASE_URL}/img/tokyo-vertice.png`,
+    descripcion: 'Diseño especial para vértices', 
     promocion: true
   }
-  ,
+]
+
+export const contenedorPlatos = [
   {
-    id: '4',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/solucion.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
-    promocion: false
+    id: '1',
+    titulo: 'Plato rampa ',
+    imagen: `${import.meta.env.BASE_URL}/img/blanco-rampa.png`,
+    descripcion:'Diseño con rampa para fácil acceso y funcionalidad',
+    promocion: true
   },
   {
-    id: '5',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/aplizaciones-innovadoras.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
-    promocion: false
-  }
-  ,
-  {
-    id: '6',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/solucion.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
-    promocion: false
+    id: '2',
+    titulo: 'Plato cuadrado',
+    imagen: `${import.meta.env.BASE_URL}/img/cuadrado-blanco.png`,
+    descripcion:'Diseño cuadrado clásico para espacios equilibrados',
+    promocion: true
   },
   {
-    id: '7',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/aplizaciones-innovadoras.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
-    promocion: false
+    id: '3',
+    titulo: 'Plato semicircular',
+    imagen: `${import.meta.env.BASE_URL}/img/semicircular-blanco.png`,
+    descripcion:'Perfecto para pequeños espacios con diseño curvo',
+    promocion: true
   },
-  {
-    id: '8',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/solucion.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
-    promocion: false
-  },
-  {
-    id: '9',
-    titulo: 'Elena Neumología: Desarrollo web seguro y adaptable',
-    imagen: '/img/aplizaciones-innovadoras.jpg',
-    texto: 'El desarrollo de Elena Neumologia se centrá en ofrecer una plataforma profesional , intuitiva y optimizada para dispositivos móviles, garantizando máxima seguridad.',
-    fecha: '9 de marzo de 2025',
-    enlace: 'https://asirtec.es/%f0%9f%9a%80-elena-neumologia-desarrollo-web-seguro-y-adaptable-%f0%9f%8f%a5%f0%9f%92%bb/',
-    destacado: false,
-    promocion: false
-  }
 ]
 
 

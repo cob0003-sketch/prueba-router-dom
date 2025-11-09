@@ -4,6 +4,7 @@ export type ModalStoreTypes = {
     modalNav: boolean
     changeModalNav: () => void
     closeModalNav: ()=> void
+    showModalNav: ()=> void
 }
 
 export const useModalSliceCreator: StateCreator<ModalStoreTypes> = (set) => ({
@@ -17,6 +18,9 @@ export const useModalSliceCreator: StateCreator<ModalStoreTypes> = (set) => ({
         }))
     },
     closeModalNav:()=> {
+        set({modalNav: false})
+    },
+     showModalNav:()=> {
         set({modalNav: false})
     }
 

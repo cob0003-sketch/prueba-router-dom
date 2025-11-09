@@ -1,17 +1,15 @@
 
 import { motion } from 'framer-motion';
-import { contenedorProyectos } from '../data/db';
+// import { contenedorMamparas } from '../data/db';
 import { useAppStore } from '../stores/useAppStoreCreate'
-
 
 
 export default function Header() {
 
     //State para el banner y filtro para traer el destacado
-    const filterBanner = contenedorProyectos.filter(curso => curso.destacado)
     const showBanner = useAppStore(state => state.showBanner)
-    const modalBanner = useAppStore(state => state.modalBanner)
-    const closeBanner = useAppStore(state => state.closeBanner)
+    // const modalBanner = useAppStore(state => state.modalBanner)
+    // const closeBanner = useAppStore(state => state.closeBanner)
     const closeModalNav = useAppStore(state => state.closeModalNav)
 
     //función para abrir el modal de la oferta del banner
@@ -23,68 +21,67 @@ export default function Header() {
     return (
         <>
             <section
-                className='relative overflow-hidden bg-amber-50 mt-18'
-                id='inicio'>
-                {/**div capa oscura */}
-                <div className='w-full absolute top-0 h-full pointer-events-none'></div>
-                {/**div container del header */}
-                <div className='flex flex-col justify-center items-center gap-7 py-25'>
-                    {/**div banner */}
-                    <motion.h1
-                        initial={{ opacity: 0, x: -60 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
-                        className='text-6xl text-neutral-600 font-bold tracking-tighter'>Texto describiendo algo importante.</motion.h1>
-                    <div className='w-1/2 flex flex-col justify-center items-center gap-10'>
-                        <motion.p
-                            initial={{ opacity: 0, x: 60 }}
+            id='inicio'
+                className='bg-gradient-to-r from-neutral-900 to-neutral-600'>
+                <div className='container max-w-full px-5 xl:px-14 mt-16 min-h-300 lg:min-h-[auto] mx-auto py-15 flex flex-col-reverse lg:flex-row justify-center gap-10 overflow-hidden'>
+                    {/**div container del header */}
+                    <div className='lg:flex-1 flex flex-col gap-12 justify-center xl:px-5 overflow-x-hidden'>
+                        {/**div banner */}
+                        <motion.h1
+                            initial={{ opacity: 0, x: 80 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 3, delay: 0.4, ease: 'easeInOut' }}
-                            className='text-neutral-500 text-center text-2xl font-bold tracking-tighter'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed qui, commodi repellat quasi fugit dolorum veritatis. Repellat dolor.</motion.p>
-                        <div className='flex flex-row gap-10'>
-                            {/**boton para el banner */}
-                            <button
-                                type='button'
-                                className='px-12 py-3 bg-neutral-800 text-amber-50 text-xl font-bold rounded-4xl hover:bg-neutral-600 hover:shadow-neutral-400 hover:shadow-md transition-all linear duration-300'
-                                onClick={handleBannerOpcion}>Proyectos</button>
-                            <button
-                                type='button'
-                                className='px-12 py-3 bg-neutral-100 border border-neutral-400 text-neutral-700 text-xl hover:bg-neutral-300 hover:shadow-neutral-400 hover:shadow-md font-bold rounded-4xl duration-300'
-                                onClick={handleBannerOpcion}>Proyectos</button>
+                            transition={{ type: 'spring', stiffness: 20, damping:16, mass:2 }}
+                            className='text-4xl md:text-6xl text-neutral-100 font-bold tracking-tighter '>Comodidad y elegancia en tú dia a dia</motion.h1>
+                        <div className='flex flex-col items-center gap-12'>
+                            <motion.p
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ type: 'spring', stiffness: 40, damping: 16, mass:2, delay:1.2 }}
+                                className='text-neutral-200 text-xl md:text-2xl font-light tracking-tighter '><span className='text-orange-400/70 text-4xl font-bold '>Elite Blanco</span><br />Combina materiales de alta resistencia con un acabado antideslizante.
+                                Durabilidad, elegancia y seguridad en cada detalle.</motion.p>
+                            <div className='w-full flex flex-row justify-start gap-5 '>
+                                {/**boton para el banner */}
+                                <button
+                                    type='button'
+                                    className='flex flex-row items-center gap-1 px-12 py-2 bg-neutral-500 text-xl text-white text-shadow-xs text-shadow-neutral-900 font-semibold rounded-md hover:shadow-md hover:bg-neutral-400/90 transition-all duration-200 ease-linear'
+                                    onClick={handleBannerOpcion}>Ver detalles
+                                    <motion.span
+                                        initial={{ x: 0 }}
+                                        animate={{ x: 5 }}
+                                        transition={{ type: 'spring', stiffness:50, repeat: Infinity, repeatType: 'reverse' }}
+                                        className='h-3.5'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                        </svg>
+                                    </motion.span></button>
+                            </div>
                         </div>
                     </div>
+                    <div
+                        className="flex-1 w-full h-152 bg-[url('/img/elite-blanco-frontal.png')] bg-cover bg-bottom shadow-xl shadow-neutral-900"></div>
                 </div>
 
-
-
-
-                {/**div contiene el logo y texto */}
-
-
-                {/**mostramos la oferta en un modal */}
+                {/* *mostramos la oferta en un modal
                 {modalBanner && (
-                    <div className='relative'>
+                    <>
                         {filterBanner.map(curso => (
                             <motion.article
                                 key={curso.id}
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, amount: 0.4 }}
-                                transition={{ duration: 1, delay: 0.3, ease: 'linear' }}
-                                className="fixed top-0 left-0 z-100 w-screen h-screen bg-white flex flex-col justify-center"
+                                initial={{ opacity: 0.2 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.4, ease: 'linear' }}
+                                className="fixed inset-0 w-full mx-auto min-h-screen flex flex-col justify-center z-100 bg-white"
                             >
                                 <div className='flex flex-col items-center gap-8 '>
                                     <a
                                         href={`${curso.enlace}`}
                                         target="blank"
                                         className='w-4/5 mx-auto grid grid-cols-2 gap-10'
-
                                     >
                                         <div className="overflow-hidden">
                                             <img
                                                 src={`${curso.imagen}`}
                                                 alt={`Proyecto de ${curso.titulo}`}
-                                                className="h-full w-full object-cover object-center"
+                                                className="object-cover object-center"
                                             />
                                         </div>
                                         <div className="flex flex-col gap-3 pt-2">
@@ -99,8 +96,8 @@ export default function Header() {
                                 </div>
                             </motion.article>
                         ))}
-                    </div>
-                )}
+                    </>
+                )} */}
             </section>
         </>
     )

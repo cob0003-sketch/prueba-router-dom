@@ -1,11 +1,25 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;   /* scroll suave */
-  scroll-padding-top: 85px;   /* altura de tu navbar fijo */
-}
-
 body {
     font-family: "Nunito Sans", sans-serif;
+    background-color: white;
 }
 
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #9d6748;
+  transition: width 0.3s ease-out;
+  -webkit-transition: width 0.3s ease-out;
+  -moz-transition: width 0.3s ease-out;
+  -ms-transition: width 0.3s ease-out;
+  -o-transition: width 0.3s ease-out;
+}
+
+.underline-hover:hover::after {
+  width: 100%;
+}
