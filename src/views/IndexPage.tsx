@@ -294,7 +294,8 @@ export default function IndexPage() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 1, delay: 0.5 * index * 0.5, ease: 'easeInOut' }}
                 key={articulo.id}
-                className="flex flex-col bg-neutral-50 shadow-neutral-600 shadow-2xl cursor-pointer"
+                className="flex flex-col bg-neutral-50 shadow-neutral-800 shadow-2xl cursor-pointer hover:bg-neutral-200 hover:translate-y-3
+                transition-all duration-300 ease-linear"
                 onClick={() => handleScroll('inicio')}
               >
 
@@ -309,12 +310,10 @@ export default function IndexPage() {
                 </div>
 
                 <h3
-                  className="text-2xl text-neutral-900 text-center font-serif py-2 bg-amber-900/40 hover:text-white hover:text-shadow-neutral-600 hover:text-shadow-xs
-                  transition-all duration-400 ease-in-out
-                  ">{articulo.titulo}</h3>
-                <p className="flex flex-row gap-2 text-lg text-neutral-500 justify-center items-start font-serif py-3 px-2 bg-neutral-50">
+                  className="text-2xl text-neutral-900 text-center font-serif py-2 bg-amber-900/4">{articulo.titulo}</h3>
+                <p className="flex flex-row gap-2 text-lg text-neutral-600 justify-center items-start font-serif py-3 px-2">
                   {articulo.descripcion}
-                  <span><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#00ff00" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg></span>
+                 
                 </p>
                 <div>
                   <button className="flex justify-center items-center w-full text-neutral-600 font-bold pb-2 ">Más detalles<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#888888" viewBox="0 0 256 256"><path d="M224,216a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,216ZM80,176a8,8,0,0,0,5.66-2.34L184,75.31V152a8,8,0,0,0,16,0V56a8,8,0,0,0-8-8H96a8,8,0,0,0,0,16h76.69L74.34,162.34A8,8,0,0,0,80,176Z"></path></svg></button>
@@ -344,7 +343,8 @@ export default function IndexPage() {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 1, delay: 0.5 * index * 0.5, ease: 'easeInOut' }}
                 key={plato.id}
-                className="flex flex-col bg-neutral-50 shadow-neutral-600 shadow-2xl cursor-pointer">
+                className="flex flex-col bg-neutral-50 shadow-neutral-600 shadow-2xl cursor-pointer hover:bg-neutral-200 hover:translate-y-3
+                transition-all duration-300 ease-linear">
                 {/* Contenedor con altura consistente */}
                 <div className="w-full h-120">
                   <img
@@ -353,14 +353,10 @@ export default function IndexPage() {
                     className="w-full h-full object-center"
                   />
                 </div>
-                <h3 className="text-2xl text-neutral-900 text-center font-serif py-2 bg-neutral-900/20 hover:text-white  hover:text-shadow-neutral-600 hover:text-shadow-xs
-                transition-all duration-400 ease-in-out
-                ">{plato.titulo}</h3>
-                <p className="flex flex-row text-lg gap-2 text-neutral-500 justify-center items-start font-serif py-3 px-5">{plato.descripcion}
-                  <span><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#00ff00" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg></span>
-                </p>
+                <h3 className="text-2xl text-neutral-black text-center font-serif py-2 bg-neutral-900/20">{plato.titulo}</h3>
+                <p className="text-lg text-neutral-600 font-serif py-3 px-8">{plato.descripcion}</p>
                 <div>
-                  <button className="flex justify-center w-full items-center text-neutral-600 font-bold pb-2 ">Más detalles <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#888888" viewBox="0 0 256 256"><path d="M224,216a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,216ZM80,176a8,8,0,0,0,5.66-2.34L184,75.31V152a8,8,0,0,0,16,0V56a8,8,0,0,0-8-8H96a8,8,0,0,0,0,16h76.69L74.34,162.34A8,8,0,0,0,80,176Z"></path></svg></button>
+                  <button className="flex justify-end w-full items-center text-neutral-600 font-bold pb-2 pr-4 ">Más detalles <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#888888" viewBox="0 0 256 256"><path d="M224,216a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,216ZM80,176a8,8,0,0,0,5.66-2.34L184,75.31V152a8,8,0,0,0,16,0V56a8,8,0,0,0-8-8H96a8,8,0,0,0,0,16h76.69L74.34,162.34A8,8,0,0,0,80,176Z"></path></svg></button>
                 </div>
               </motion.div>
             }
